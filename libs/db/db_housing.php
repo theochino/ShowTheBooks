@@ -183,6 +183,22 @@ class housing extends queries {
 		return;
 		
 	}
-
+	
+	function SaveTestimonyLong($fname, $lname, $address, $apt, $borough, $zipcode, $email, $tel, $satisfaction, $testimony, $share) {
+		$sql = "INSERT INTO UnsortTestimony SET " .
+						"UnsortTestimony_FirstName = :fname, UnsortTestimony_LastName = :lname, " .
+						"UnsortTestimony_Address = :address, UnsortTestimony_Apt = :apt, " .
+						"UnsortTestimony_Borough = :borough, UnsortTestimony_Zipcode = :zipcode, " .
+						"UnsortTestimony_Email = :email, UnsortTestimony_Telephone = :tel, " .
+						"UnsortTestimony_Satisfaction = :satisfaction, UnsortTestimony_Testimony = :testimony, " . 
+						"UnsortTestimony_AllowShare = :share";
+		 
+		$sql_vars = array(":fname" => $fname, ":lname" => $lname, ":address" => $address, 
+											":apt" => $apt, ":borough" => $borough, ":zipcode" => $zipcode, 
+											":email" => $email, ":tel" => $tel, ":satisfaction" => $satisfaction, 
+											":testimony" => $testimony, ":share" => $share);
+		
+		return $this->_return_nothing($sql, $sql_vars);
+	}
 }
 ?>

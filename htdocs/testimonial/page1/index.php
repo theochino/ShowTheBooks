@@ -3,16 +3,13 @@
 	if ( ! empty ($_POST)) {
 		// This is to load the menus groupping
 		require_once $_SERVER["DOCUMENT_ROOT"] . "/../libs/funcs/general.php";
-		require_once $_SERVER["DOCUMENT_ROOT"] . "/../libs/db/db_housing.php";
+		require_once $_SERVER["DOCUMENT_ROOT"] . "/../libs/db/db_housing.php";	
 		require_once $_SERVER["DOCUMENT_ROOT"] . "/../libs/common/verif_sec.php";
-	
-		$r = new housing();		
-		$r->SaveTestimonyLong($_POST["fname"], $_POST["lname"], $_POST["address"], $_POST["apt"], 
-													$_POST["borough"], $_POST["zipcode"], $_POST["email"], $_POST["tel"], 
-													$_POST["satisfaction"], $_POST["testimony"], $_POST["share"]);
+
+		$r = new housing();	
+		//$ResEmail = $r->SaveJoinEvent($_POST["name"], $_POST["email"], 'Contact Window -', $_POST["message"]);
 		
-		header("Location: /testimonial/thanks");
-		// header("Location: /testimonial/page1/?k=" . EncryptURL("BLA"));
+		header("Location: /testimonial/page1");
 		exit();
 	}
 
@@ -29,13 +26,12 @@
 			        <h3 class="text-center mb-3">Testimonial</h3>
 	        
 			        <P>
-				        The housing crisis is such that it affect everyone. We created this webpage to share how widespread is 
-				        the problem.
+				        Thanks for your testimonial. 
 			        </P>
 
 			        <P>
-				        The information you supply here will be shared with the local politicians and the proper authority so
-				        we can remedy.
+								We would like to ask you a few additional question about 
+								satisfied or unsatisfied you are with the process.
 			        </P>
 			        
 			        <div class="form-row">                                                           
@@ -56,12 +52,12 @@
 										
 										<div class="form-group col-md-3">
 		                    <label class="sr-only" for="capt">Apt</label>
-		                    <input type="text" class="form-control" id="capt" name="apt" placeholder="Apt" minlength="2">
+		                    <input type="text" class="form-control" id="capt" name="apt" placeholder="Apt" minlength="2" required="" aria-required="false">
 		                </div>                    
 		                
 		                <div class="form-group col-md-5">
 		                    <label class="sr-only" for="cborough">Borough</label>
-		                    <input type="text" class="form-control" id="cborough" name="borough" placeholder="Borough">
+		                    <input type="email" class="form-control" id="cborough" name="borough" placeholder="Borough" required="" aria-required="false">
 		                </div>
 		                
 		                <div class="form-group col-md-4">
@@ -70,43 +66,21 @@
 		                </div>
 		                
 		                <div class="form-group col-12">
-		                    <label class="sr-only" for="cemail">Email or phone number</label>
-		                    <input type="text" class="form-control" id="cemail" name="email" placeholder="Email">
+		                    <label class="sr-only" for="cemail">Email</label>
+		                    <input type="text" class="form-control" id="cemail" name="email" placeholder="Email" required="" aria-required="true">
 		                </DIV>
-
-		                <div class="form-group col-12">
-		                    <label class="sr-only" for="ctel">Email or phone number</label>
-		                    <input type="text" class="form-control" id="ctel" name="tel" placeholder="Telephone">
-		                </DIV>
-		                
-		                <div class="form-group col-12">
-			                <select id="share" class="custom-select" name="satisfaction" required="" aria-required="true">
-												<option selected>Are you satisfied with the process?</option>
-												<option value="yes-100">Yes, 100% satisfied</option>
-												<option value="yes-minor">Yes but there are minors issues</option>
-												<option value="yes-shake">Yes but my input was not taken but I am satisfied</option>
-												<option value="no-shake">No and my input was not even taken into account</option>
-												<option value="no-live">No but I learned to live with it</option>
-												<option value="no-100">Not at all</option>
-												<option value="complicated">It's complicated</option>
-												<option value="notsay">I prefer to keep quiet</option>
-											</select>
-										</div>
 		                		            		                
+		                
 		                <div class="form-group col-12">
 		                    <label class="sr-only" for="ctestimony">Public Testimony</label>
-		                    <textarea class="form-control" id="ctestimony" name="testimony" placeholder="Please describe your feeling of the process" rows="10" required="" aria-required="true"></textarea>
+		                    <textarea class="form-control" id="ctestimony" name="testimony" placeholder="Public Testimony" rows="10" required="" aria-required="true"></textarea>
 		                </div>
-		                
-		                 
 		              
 		                <div class="form-group col-12">
 			                <select id="share" class="custom-select" name="share" required="" aria-required="true">
-												<option selected>Can we share that testimony publicly?</option>
+												<option selected>Can we share that testimony?</option>
 												<option value="yes">yes</option>
-												<option value="no-no">no, and keep it confidential</option>
-												<option value="no-elect">no, but you can share it privately</option>
-												<option value="no-elect">no, but you can share with elected officials</option>
+												<option value="no">no</option>
 											</select>
 										</div>
 		                

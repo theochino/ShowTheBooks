@@ -17,6 +17,7 @@ class db {
       // $this->connect_id = mysql_connect(); - Deprecated
 			$error_msg = "Database not available ... reporting why.";
 			#header("Location: /error/?k=" . EncryptURL("error_msg=" . $error_msg));
+			echo "The Username is empty<BR>\n";
 			exit();
 			// Put a nagios trigger here
 			exit();
@@ -29,7 +30,7 @@ class db {
 		  			PDO::MYSQL_ATTR_SSL_KEY   => $sslkeys["srvkey"],
 		  			PDO::MYSQL_ATTR_SSL_CERT	=> $sslkeys["srvcert"],
 		  			PDO::MYSQL_ATTR_SSL_CA    => $sslkeys["srvca"]
-			  	);
+				);
 			  	
 		  	  $time_start = microtime(true);
 			   	$this->pdo = new PDO($this->type . ":host=$host;port=$port;dbname=$database", $user, $password, $MYSQLOPTIONS);
@@ -50,11 +51,12 @@ class db {
 			}	catch( PDOException $e ) {
 				$this->SaveError ($e->getMessage(), $sql, $sql_vars, $DebugInfo);
 	   		if ( $DebugInfo["Flag"] > 0 ) {
-					$error_msg ="Failed to get DB handle: " . $e->getMessage() . "\n";
+				echo $error_msg ="Failed to get DB handle: " . $e->getMessage() . "\n";
+				
 					#header("Location: /error/?k=" . EncryptURL("error_msg=" . $error_msg));
 					exit();
 			} else { 
-					$error_msg = "Error with the Database. Admin already notified. " . 
+				echo 	$error_msg = "Error with the Database. Admin already notified. " . 
 												"Please try in one hour.";
 					#header("Location: /error/?k=" . EncryptURL("error_msg=" . $error_msg));
 					exit();
