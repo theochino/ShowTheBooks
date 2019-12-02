@@ -1,7 +1,6 @@
 <?php	
 	$databasename = "NYCHousing";
 	$databaseserver = "localhost";
-#	$databaseserver = "192.168.199.214";
 	$databaseport = "3306";
 	$databaseuser = "NYCHousing";
 	$databasepassword = "NYCHousing";

@@ -79,7 +79,8 @@
 		                    <input type="text" class="form-control" id="ctel" name="tel" placeholder="Telephone">
 		                </DIV>
 		                
-		                <div class="form-group col-12">
+				<div class="form-group col-12">
+					Click to select from options below
 			                <select id="share" class="custom-select" name="satisfaction" required="" aria-required="true">
 												<option selected>Are you satisfied with the process?</option>
 												<option value="yes-100">Yes, 100% satisfied</option>
@@ -95,12 +96,13 @@
 		                		            		                
 		                <div class="form-group col-12">
 		                    <label class="sr-only" for="ctestimony">Public Testimony</label>
-		                    <textarea class="form-control" id="ctestimony" name="testimony" placeholder="Please describe your feeling of the process" rows="10" required="" aria-required="true"></textarea>
+		                    <textarea class="form-control" id="ctestimony" name="testimony" placeholder="Please describe your experience with the process" rows="10" required="" aria-required="true"></textarea>
 		                </div>
 		                
 		                 
 		              
-		                <div class="form-group col-12">
+				<div class="form-group col-12">
+					Click to select from options below
 			                <select id="share" class="custom-select" name="share" required="" aria-required="true">
 												<option selected>Can we share that testimony publicly?</option>
 												<option value="yes">yes</option>
