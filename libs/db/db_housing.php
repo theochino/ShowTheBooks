@@ -184,6 +184,12 @@ class housing extends queries {
 		
 	}
 	
+	function ReadTestimonyLong() {
+		$sql = "SELECT * FROM UnsortTestimony WHERE  UnsortTestimony_Print = 'yes'";
+		return $this->_return_multiple($sql);
+		
+	}
+	
 	function SaveTestimonyLong($fname, $lname, $address, $apt, $borough, $zipcode, $email, $tel, $satisfaction, $testimony, $share) {
 		$sql = "INSERT INTO UnsortTestimony SET " .
 						"UnsortTestimony_FirstName = :fname, UnsortTestimony_LastName = :lname, " .
