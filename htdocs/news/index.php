@@ -68,7 +68,7 @@ $NewArticle[$TotalArticles]["First"] = substr ($Story["NewsStories_First"], 20) 
 								<h5 class="card-title"><a class="theme-link" href="<?= $var["NewsStories_Link"] ?>" TARGET="News"><?= $var["NewsStories_Title"] ?></a></h5>
 								<p class="card-text">
 								
-									<?= substr ($var["NewsStories_First"], 20) . "..."; ?>
+									<?= substr ($var["NewsStories_First"], 0, 200) . "..."; ?>
 									
 								<p class="mb-0"><a class="more-link" href="<?= $var["NewsStories_Link"] ?>" TARGET="News">Read more &rarr;</a></p>
 								

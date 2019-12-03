@@ -34,7 +34,7 @@
 				$NewArticle[$TotalArticles]["Title"] = $Story["NewsStories_Title"];
 				$NewArticle[$TotalArticles]["Author"] = $Story["NewsStories_Author"];
 				$NewArticle[$TotalArticles]["Date"] = $Story["NewsStories_Date"];
-				$NewArticle[$TotalArticles]["First"] = substr ($Story["NewsStories_First"], 20) . "...";
+				$NewArticle[$TotalArticles]["First"] = substr ($Story["NewsStories_First"], 0, 200) . "...";
 				$NewArticle[$TotalArticles]["Source"] =  $Story["NewsStories_Source"];
 				$TotalArticles++;
 			}
