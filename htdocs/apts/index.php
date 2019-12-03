@@ -24,7 +24,7 @@
 	
 	$PresText = "Block " . $housing["Buildings_Block"] . " Lot " . $housing["Buildings_Lot"] . 
 							"<BR>" . $housing["Buildings_Law"];
-	$Picture = "/buildings/640RSD.png";
+	$Picture = "/buildings/" . $BuildingID . ".png";
 	
 	$TotalArticles = 0;
 	if (! empty ($NewsStory)) {
