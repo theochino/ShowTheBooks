@@ -19,8 +19,12 @@
 	
 ?>
 
+    	
+
 	    
     <div class="main-wrapper">
+    	
+
 	  
 	    <section class="blog-list px-3 py-5 p-md-5">
 		    <div class="container">
@@ -93,14 +97,16 @@ $NewArticle[$TotalArticles]["First"] = substr ($Story["NewsStories_First"], 20) 
 		    </div>
 	    </section>
 	    
-	    <footer class="footer text-center py-4">
+	  
+    
+ 
+<?php /*
+
+  <footer class="footer text-center py-4">
 			<small class="copyright">Template Copyright &copy; <a href="https://themes.3rdwavemedia.com/" target="_blank">3rd Wave Media</a></small>
 		</footer>
     
     </div><!--//main-wrapper-->
-    
- 
-
     <!-- Javascript -->          
     <script src="assets/plugins/jquery-3.4.1.min.js"></script>
     <script src="assets/plugins/popper.min.js"></script> 
@@ -116,4 +122,9 @@ $NewArticle[$TotalArticles]["First"] = substr ($Story["NewsStories_First"], 20) 
 
 </body>
 </html> 
+*/ ?>
 
+	
+<?php 
+	include $_SERVER["DOCUMENT_ROOT"] . "/footer/index.php";    	
+?>
