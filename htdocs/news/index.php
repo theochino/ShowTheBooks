@@ -1,7 +1,22 @@
 <?php 
+
+	date_default_timezone_set('America/New_York'); 
+	// This is to load the menus groupping
+	require_once $_SERVER["DOCUMENT_ROOT"] . "/../libs/funcs/general.php";
+	require_once $_SERVER["DOCUMENT_ROOT"] . "/../libs/db/db_housing.php";
+	require_once $_SERVER["DOCUMENT_ROOT"] . "/../libs/common/verif_sec.php";
+
+	$r = new housing();	
+	$result = $r->PrintNewsStory();
+			
 	include $_SERVER["DOCUMENT_ROOT"] . "/headers/index.php";
 	include $_SERVER["DOCUMENT_ROOT"] . "/sidebar/index.php";
 	// include $_SERVER["DOCUMENT_ROOT"] . "/intro/index.php";
+	
+	
+	
+	
+	
 ?>
 
 	    
@@ -10,93 +25,70 @@
 	    <section class="blog-list px-3 py-5 p-md-5">
 		    <div class="container">
 			    <div class="row">
+			    	
+<?php if ( ! empty ($result)) { 
+				foreach ($result as $var) {
+						if ( ! empty ($var)) {
+
+
+/*
+$NewArticle[$TotalArticles]["First"] = substr ($Story["NewsStories_First"], 20) . "...";
+	$var["Buildings_ID"] 
+    $var["NewsStories_ID"] 
+    $var["NewsStories_Title"]  => Becoming Home
+    $var["NewsStories_Source"]  => City Limits
+    $var["NewsStories_Link"]  => https://citylimits.org/2000/03/01/becoming-home
+    $var["[NewsStories_Author"]  => Robin Shulman
+    $var["NewsStories_Date"]  => 2000-03-01
+   $var["NewsStories_First"]  => Over the last 20 years, the two big apartment buildings at 640 and 644 Riverside Drive have been a laboratory for real estate disaster 
+   $var["NewsStories_PicPath"]  => 
+   $var["NewsStories_Publish"]  => yes
+)*/
+
+
+
+
+   // Calulating the difference in timestamps 
+    $diff = strtotime($var["NewsStories_Date"]) - time(NULL);
+      
+    // 1 day = 24 hours 
+    // 24 * 60 * 60 = 86400 seconds 
+    $DateDif = abs(round($diff / 86400)); 
+
+
+			    	 ?>
 					<div class="col-md-4 mb-3">
 						<div class="card blog-post-card">
-							<img class="card-img-top" src="assets/images/blog/blog-post-thumb-card-1.jpg" alt="image">
+							<img class="card-img-top" src="<?= $var["NewsStories_PicPath"] ?>" alt="">
 							<div class="card-body">
-								<h5 class="card-title"><a class="theme-link" href="blog-post.html">Top 3 JavaScript Frameworks</a></h5>
-								<p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient...</p>
-								<p class="mb-0"><a class="more-link" href="blog-post.html">Read more &rarr;</a></p>
+								<h5 class="card-title"><a class="theme-link" href="<?= $var["NewsStories_Link"] ?>" TARGET="News"><?= $var["NewsStories_Title"] ?></a></h5>
+								<p class="card-text">
+								
+									<?= substr ($var["NewsStories_First"], 20) . "..."; ?>
+									
+								<p class="mb-0"><a class="more-link" href="<?= $var["NewsStories_Link"] ?>" TARGET="News">Read more &rarr;</a></p>
 								
 							</div>
 							<div class="card-footer">
-								<small class="text-muted">Published 2 days ago</small>
+								<small class="text"><A HREF="/apts/<?= $var["Buildings_ID"] ?>"><?= $var["Buildings_Address"] ?></A></small><BR>
+								<small class="text-muted">Published <?= $DateDif ?> days ago</small>
 							</div>
 						</div><!--//card-->
 					</div><!--//col-->
-					<div class="col-md-4 mb-3">
-						<div class="card blog-post-card">
-							<img class="card-img-top" src="assets/images/blog/blog-post-thumb-card-2.jpg" alt="image">
-							<div class="card-body">
-								<h5 class="card-title"><a class="theme-link" href="blog-post.html">About Remote Working</a></h5>
-								<p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient...</p>
-								<p class="mb-0"><a class="more-link" href="blog-post.html">Read more &rarr;</a></p>
-							</div>
-							<div class="card-footer">
-								<small class="text-muted">Published a week ago</small>
-								
-							</div>
-						</div><!--//card-->
-					</div><!--//col-->
-					<div class="col-md-4 mb-3">
-						<div class="card blog-post-card">
-							<img class="card-img-top" src="assets/images/blog/blog-post-thumb-card-3.jpg" alt="image">
-							<div class="card-body">
-								<h5 class="card-title"><a class="theme-link" href="blog-post.html">A Guide to Becoming a Full-Stack Developer</a></h5>
-								<p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient...</p>
-								<p class="mb-0"><a class="more-link" href="blog-post.html">Read more &rarr;</a></p>
-							</div>
-							<div class="card-footer">
-								<small class="text-muted">Published 3 weeks ago</small>
-							</div>
-						</div><!--//card-->
-					</div><!--//col-->
-					<div class="col-md-4 mb-3">
-						<div class="card blog-post-card">
-							<img class="card-img-top" src="assets/images/blog/blog-post-thumb-card-4.jpg" alt="image">
-							<div class="card-body">
-								<h5 class="card-title"><a class="theme-link" href="blog-post.html">High Performance JavaScript</a></h5>
-								<p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient...</p>
-								<p class="mb-0"><a class="more-link" href="blog-post.html">Read more &rarr;</a></p>
-							</div>
-							<div class="card-footer">
-								<small class="text-muted">Published 1 month ago</small>
-							</div>
-						</div><!--//card-->
-					</div><!--//col-->
-					<div class="col-md-4 mb-3">
-						<div class="card blog-post-card">
-							<img class="card-img-top" src="assets/images/blog/blog-post-thumb-card-5.jpg" alt="image">
-							<div class="card-body">
-								<h5 class="card-title"><a class="theme-link" href="blog-post.html">Learn React in 24 Hours</a></h5>
-								<p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient...</p>
-								<p class="mb-0"><a class="more-link" href="blog-post.html">Read more &rarr;</a></p>
-							</div>
-							<div class="card-footer">
-								<small class="text-muted">Published 1 month ago</small>
-							</div>
-						</div><!--//card-->
-					</div><!--//col-->
-					<div class="col-md-4 mb-3">
-						<div class="card blog-post-card">
-							<img class="card-img-top" src="assets/images/blog/blog-post-thumb-card-6.jpg" alt="image">
-							<div class="card-body">
-								<h5 class="card-title"><a class="theme-link" href="blog-post.html">How to Build Desktop Apps with HTML, CSS and JavaScript</a></h5>
-								<p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient...</p>
-								<p class="mb-0"><a class="more-link" href="blog-post.html">Read more &rarr;</a></p>
-							</div>
-							<div class="card-footer">
-								<small class="text-muted">Published 2 months ago</small>
-							</div>
-						</div><!--//card-->
-					</div><!--//col-->
+					
+<?php }
+		}
+	}
+?>
+
+		
 				</div><!--//row-->
 			    
-			    
+			   <?php /* 
 			    <nav class="blog-nav nav nav-justified my-5">
 				  <a class="nav-link-prev nav-item nav-link d-none rounded-left" href="#">Previous<i class="arrow-prev fas fa-long-arrow-alt-left"></i></a>
 				  <a class="nav-link-next nav-item nav-link rounded" href="#">Next<i class="arrow-next fas fa-long-arrow-alt-right"></i></a>
-				</nav>
+				</nav> */ ?>
 				
 		    </div>
 	    </section>
@@ -107,26 +99,7 @@
     
     </div><!--//main-wrapper-->
     
-    <!-- *****CONFIGURE STYLE (REMOVE ON YOUR PRODUCTION SITE)****** -->  
-	<div id="config-panel" class="config-panel d-none d-lg-block">
-		<div class="panel-inner">
-			<a id="config-trigger" class="config-trigger config-panel-hide text-center" href="#"><i class="fas fa-cog mx-auto" data-fa-transform="down-6" ></i></a>
-			<h5 class="panel-title">Choose Colour</h5>
-			<ul id="color-options" class="list-inline mb-0">
-				<li class="theme-1 active list-inline-item"><a data-style="assets/css/theme-1.css" href="#"></a></li>
-				<li class="theme-2  list-inline-item"><a data-style="assets/css/theme-2.css" href="#"></a></li>
-				<li class="theme-3  list-inline-item"><a data-style="assets/css/theme-3.css" href="#"></a></li>
-				<li class="theme-4  list-inline-item"><a data-style="assets/css/theme-4.css" href="#"></a></li>
-				<li class="theme-5  list-inline-item"><a data-style="assets/css/theme-5.css" href="#"></a></li>
-				<li class="theme-6  list-inline-item"><a data-style="assets/css/theme-6.css" href="#"></a></li>
-				<li class="theme-7  list-inline-item"><a data-style="assets/css/theme-7.css" href="#"></a></li>
-				<li class="theme-8  list-inline-item"><a data-style="assets/css/theme-8.css" href="#"></a></li>
-				<li class="theme-9  list-inline-item"><a data-style="assets/css/theme-9.css" href="#"></a></li>
-				<li class="theme-10  list-inline-item"><a data-style="assets/css/theme-10.css" href="#"></a></li>
-			</ul>
-			<a id="config-close" class="close" href="#"><i class="fa fa-times-circle"></i></a>
-		</div><!--//panel-inner-->
-	</div><!--//configure-panel-->
+ 
 
     <!-- Javascript -->          
     <script src="assets/plugins/jquery-3.4.1.min.js"></script>

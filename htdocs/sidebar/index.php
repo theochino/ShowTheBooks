@@ -42,12 +42,12 @@
 							<a class="nav-link" href="/testimonial"><i class="fas fa-file-alt fa-fw mr-2"></i>Testimonial</a>
 						</li>
 						<li class="nav-item">
+							<a class="nav-link" href="/news"><i class="fas fa-newspaper fa-fw mr-2"></i>News</a>
+						</li>
+						<li class="nav-item">
 							<a class="nav-link" href="/volunteer"><i class="fas fa-briefcase fa-fw mr-2"></i>Volunteer</a>
 						</li>
 						<?php /*
-						<li class="nav-item">
-							<a class="nav-link" href="resume.html"><i class="fas fa-file-alt fa-fw mr-2"></i>Resume</a>
-						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="blog-home.html"><i class="fas fa-blog fa-fw mr-2"></i>Blog</a>
 						</li>

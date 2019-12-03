@@ -105,11 +105,19 @@ class housing extends queries {
 	//	$sql_vars = array("
 	}
 	
-	function PrintNewsStory($BuildID) {
-		$sql = "SELECT * FROM BuildingStory LEFT JOIN NewsStories ON (NewsStories.NewsStories_ID = BuildingStory.NewsStories_ID) " .
-						"WHERE BuildingStory.Buildings_ID = :id";
-		$sql_vars = array("id" => $BuildID);
+	function PrintNewsStory($BuildID = 0) {
+		$sql = "SELECT * FROM BuildingStory LEFT JOIN NewsStories ON (NewsStories.NewsStories_ID = BuildingStory.NewsStories_ID) ";
+		
+		if ( empty ($BuildID) ) {
+			$sql .= " LEFT JOIN Buildings ON (Buildings.Buildings_ID = BuildingStory.Buildings_ID) ";
+			$sql .= "ORDER BY NewsStories_Date DESC";
+			return $this->_return_multiple($sql);
+		}
+
+		$sql .= "WHERE BuildingStory.Buildings_ID = :id ORDER BY NewsStories_Date DESC";
+		$sql_vars = array("id" => $BuildID);	
 		return $this->_return_multiple($sql, $sql_vars);
+			
 	}
 	
 	function PrintTestimonial($BuildID) {
