@@ -15,12 +15,30 @@
 	$housing = $r->ListDoneHousing($BuildingID);
 	$NewsStory = $r->PrintNewsStory($BuildingID);
 	$Testimonial = $r->PrintTestimonial($BuildingID);
-
+	
+	
 	$AptName = $housing["Buildings_Address"];
 	$Borough = $housing["Buildings_Borough"];	
+
+	switch($Borough) {
+		case "MANHATTAN":			$boro = 1; break;
+		case "BRONX":					$boro = 2; break;
+		case "BROOKLYN":			$boro = 3; break;
+		case "QUEENS":				$boro = 4; break;
+		case "STATEN ISLAND":	$boro = 5; break;
+	}
+	
+	$block = $housing["Buildings_Block"];
+	$lot = $housing["Buildings_Lot"];
+	
 	$ResoNumber = $housing["HouseRes_Reso"];
 	$Resolution = $housing["HouseRes_TextReso"];
 	$ResoLink = $housing["HouseRes_Link"];
+	$LinkToWhoOwWhat = "https://whoownswhat.justfix.nyc/en/address/" . $housing["Buildings_WhoOwnWhat"];
+	$LinkToLawsuit = "http://iapps.courts.state.ny.us/iscroll/SQLData.jsp?IndexNo=104128-2008";
+	
+	$AccrisLink = "http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?borough=" . $boro . "&block=" . $block . "&lot=" . $lot;
+	$NYCBuildingLink = "http://a810-bisweb.nyc.gov/bisweb/PropertyProfileOverviewServlet?boro=" . $boro . "&block=" . $block . "&lot=" . $lot;
 	
 	$PresText = "Block " . $housing["Buildings_Block"] . " Lot " . $housing["Buildings_Lot"] . 
 							"<BR>" . $housing["Buildings_Law"];
@@ -56,8 +74,14 @@
 						<div class="bio mb-4"><?= $PresText ?></a>.
 						</div><!--//bio-->
 						<div class="mb-4">
-							<a class="btn btn-primary mr-2 mb-3" href="https://a836-acris.nyc.gov/" TARGET="ACRIS"><i class="fas fa-arrow-alt-circle-right mr-2"></i><span class="d-none d-md-inline">Open</span> ACRIS</a>
 							<a class="btn btn-secondary mb-3" href="/register"><i class="fas fa-file-alt mr-2"></i><span class="d-none d-md-inline"></span>I live there</a>
+							<a class="btn btn-primary mb-3" href="<?= $AccrisLink ?>" TARGET="ACRIS"><i class="fas fa-arrow-alt-circle-right mr-2"></i><span class="d-none d-md-inline">Open</span> ACRIS</a>
+							<a class="btn btn-primary mb-3" href="<?= $NYCBuildingLink ?>" TARGET="NYCBuild"><i class="fas fa-arrow-alt-circle-right mr-2"></i><span class="d-none d-md-inline">Open</span> DOB</a>
+
+
+<?php if (! empty($LinkToWhoOwWhat)) { ?>
+							<a class="btn btn-primary mb-3" href="<?= $LinkToWhoOwWhat ?>" TARGET="WhoOwnWhat"><i class="fas fa-arrow-alt-circle-right mr-2"></i><span class="d-none d-md-inline">Open</span> Who Own What</a>
+<?php } ?>
 						</div>
 					</div><!--//media-body-->
 					<img class="profile-image mb-3 mb-lg-0 ml-lg-5 mr-md-0" src="<?= $Picture ?>" alt="">
@@ -75,11 +99,24 @@
 				<a class="btn btn-primary mr-2 mb-3" href="<?= $ResoLink ?>" TARGET="CITYHALL"><i class="fas fa-arrow-alt-circle-right mr-2"></i><span class="d-none d-md-inline">Open</span> City Council</a>
 
 				<?php } ?>
+
+				
+				
+				
 	
 			</div><!--//container-->
 		</section>
 		
 		<div class="container"><hr></div>
+		
+		
+<?php /* bla */
+
+//Buildings_WhoOwnWhat
+
+?>
+		
+		
 		
 <?php if (! empty ($Testimonial)) { ?>
 		<section class="testimonials-section p-3 p-lg-5">

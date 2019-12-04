@@ -70,7 +70,7 @@ function myFunction() {
 				<a class="btn btn-primary mr-2 mb-3" href="/apts/<?= $var["Buildings_ID"]  ?>"><i class="fas fa-arrow-alt-circle-right mr-2"></i><span class="d-none d-md-inline"></span></a>
 			</TD>			
 	
-			<TD scope="row"><?= $var["Buildings_Address"]  . " - " . $var["Buildings_AKAAddress"] ?></TD>
+			<TD scope="row"><?= $var["Buildings_Address"] ?><?php if (! empty( $var["Buildings_AKAAddress"])) { echo " - " . $var["Buildings_AKAAddress"]; } ?></TD>
 			<TD><?= $var["Buildings_Borough"]  ?></TD>
 		</TR>	
 			
