@@ -137,7 +137,28 @@ class housing extends queries {
 		
 		$sql = "INSERT INTO Email SET Email_Number = :email, Email_Contact = 'yes'";
 		return $this->_return_nothing($sql, $sql_vars);
-	}	
+	}
+	
+	function SaveNewsArticle($Link, $Title, $Source, $Author, $Date, $First, $PictPath, $Publish = 'no') {
+		$sql = "INSERT INTO NewsStories SET NewsStories_Title = :Title, NewsStories_Source = :Source, " .
+						"NewsStories_Link = :Link, NewsStories_Author = :Author, NewsStories_Date = :Date, " .
+						"NewsStories_First = :First, NewsStories_PicPath = :Path, NewsStories_Publish = :Publish";
+						
+		$sql_vars = array("Title" => $Title, "Source" => $Source, "Link" => $Link, "Author" => $Author, "Date" => $Date, 
+											"First" => $First, "Path" => $PictPath, "Publish" => $Publish);
+		$this->_return_nothing($sql, $sql_vars);				
+											
+		$sql = "SELECT LAST_INSERT_ID() as ID";
+		$return = $this->_return_simple($sql);		
+		return $return["ID"];
+	}
+
+	function SaveBuildingArticle($ArticleID, $buildingid) {
+		$sql = "INSERT INTO BuildingStory SET NewsStories_ID = :ArticleID, Buildings_ID = :BuildingID";
+		$sql_vars = array("ArticleID" => $ArticleID, "BuildingID" => $buildingid);
+		return $this->_return_nothing($sql, $sql_vars);				
+	}
+	
 	
 	function SaveJoinEvent($name, $email, $action, $notes) {
 				
