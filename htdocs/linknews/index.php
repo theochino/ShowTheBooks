@@ -79,7 +79,7 @@ function myFunction() {
 
 
 <h5 class="my-3">Search here for address</h5>
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for addresses ..."></TH>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for addresses ...">
 
 <table class="table my-5" id="myTable">	
 				

@@ -24,11 +24,10 @@
 ?>
 
   
-				    
+<?php /*		    
 		     <h2 class="m-lg-1 py-3 pl-4 px-lg-5">
-		     		Rally on the steps of City Hall Tuesday December 10, 2019 at 12:45 pm.
 		     </H2>
-		     
+ */?>		     
 		     	<a class="btn btn-primary mr-2 mb-3" href="/joinus"><i class="fas fa-arrow-alt-circle-right mr-2"></i><span class="d-none d-md-inline">Join us</span></a>
 
 				  <?php /*  <div class="meta mb-3"><span class="date">Published 2 days ago</span><span class="time">5 min read</span><span class="comment"><a href="#">4 comments</a></span></div> */ ?>
