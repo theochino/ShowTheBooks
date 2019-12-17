@@ -8,8 +8,8 @@
 	
 		$r = new housing();		
 		$r->SaveTestimonyLong($_POST["fname"], $_POST["lname"], $_POST["address"], $_POST["apt"], 
-													$_POST["borough"], $_POST["zipcode"], $_POST["email"], $_POST["tel"], 
-													$_POST["satisfaction"], $_POST["testimony"], $_POST["share"]);
+					$_POST["borough"], $_POST["zipcode"], $_POST["email"], $_POST["tel"], 
+					$_POST["satisfaction"], $_POST["testimony"], $_POST["share"]);
 		
 		header("Location: /testimonial/thanks");
 		// header("Location: /testimonial/page1/?k=" . EncryptURL("BLA"));
@@ -54,7 +54,7 @@
 		                    <input type="text" class="form-control" id="caddress" name="address" placeholder="Address" required="" aria-required="true">
 		                </DIV>
 										
-										<div class="form-group col-md-3">
+				<div class="form-group col-md-3">
 		                    <label class="sr-only" for="capt">Apt</label>
 		                    <input type="text" class="form-control" id="capt" name="apt" placeholder="Apt" minlength="2">
 		                </div>                    
@@ -91,8 +91,8 @@
 												<option value="no-100">Not at all</option>
 												<option value="complicated">It's complicated</option>
 												<option value="notsay">I prefer to keep quiet</option>
-											</select>
-										</div>
+					</select>
+				</div>
 		                		            		                
 		                <div class="form-group col-12">
 		                    <label class="sr-only" for="ctestimony">Public Testimony</label>
@@ -109,13 +109,20 @@
 												<option value="no-no">no, and keep it confidential</option>
 												<option value="no-elect">no, but you can share it privately</option>
 												<option value="no-elect">no, but you can share with elected officials</option>
-											</select>
-										</div>
+					</select>
+				</div>
 		                
 		                
 		                 <div class="form-group col-12">
 		                    <button type="submit" class="btn btn-block btn-primary py-2">Save The Testimonial</button>
-		                </div>                           
+				</div>                           
+
+				<P>
+					
+
+				</P>
+
+
 		            </div><!--//form-row-->
 		        </form>
 		    </div><!--//container-->
