@@ -213,6 +213,12 @@ class housing extends queries {
 		
 	}
 	
+	funtion ReadCourtCare() {
+		$sql = "";
+		
+	}
+	
+	
 	function ReadTestimonyLong() {
 		$sql = "SELECT * FROM UnsortTestimony WHERE  UnsortTestimony_Print = 'yes'";
 		return $this->_return_multiple($sql);
