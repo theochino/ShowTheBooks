@@ -213,7 +213,7 @@ class housing extends queries {
 		
 	}
 	
-	funtion ReadCourtCare() {
+	function ReadCourtCare() {
 		$sql = "";
 		
 	}
